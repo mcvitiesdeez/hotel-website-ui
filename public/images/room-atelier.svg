@@ -1,0 +1,15 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#14181f"/>
+  <rect width="1600" height="1000" fill="url(#grad)"/>
+  <rect x="200" y="190" width="1200" height="640" rx="30" fill="rgba(246,244,241,0.88)" stroke="rgba(16,20,24,0.1)" stroke-width="2"/>
+  <rect x="320" y="320" width="360" height="360" rx="30" fill="#d9c7af" opacity="0.92"/>
+  <rect x="760" y="380" width="480" height="220" rx="28" fill="#1e2c28" opacity="0.92"/>
+  <text x="50%" y="60%" text-anchor="middle" fill="#101418" font-family="Fraunces, 'Times New Roman', serif" font-size="66">Atelier Residence</text>
+  <text x="50%" y="66%" text-anchor="middle" fill="#5c615e" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="24">Artist loft with studio lightwell</text>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1600" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#14181f"/>
+      <stop offset="1" stop-color="#23313b"/>
+    </linearGradient>
+  </defs>
+</svg>

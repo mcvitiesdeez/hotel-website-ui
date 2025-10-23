@@ -1,0 +1,15 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#121912"/>
+  <rect width="1600" height="1000" fill="url(#grad)"/>
+  <rect x="230" y="190" width="1140" height="640" rx="28" fill="rgba(246,244,241,0.92)" stroke="rgba(16,20,24,0.1)" stroke-width="2"/>
+  <circle cx="500" cy="520" r="115" fill="#cbbca4" opacity="0.88"/>
+  <rect x="720" y="400" width="460" height="220" rx="26" fill="#1E2C28" opacity="0.9"/>
+  <text x="50%" y="56%" text-anchor="middle" fill="#101418" font-family="Fraunces, 'Times New Roman', serif" font-size="62">Garden Maisonette</text>
+  <text x="50%" y="62%" text-anchor="middle" fill="#5c615e" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="26">Botanical patio · Sculptural bath</text>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1600" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E2B1F"/>
+      <stop offset="1" stop-color="#0F1510"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,15 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#101418"/>
+  <rect width="1400" height="900" fill="url(#grad)"/>
+  <rect x="210" y="230" width="980" height="440" rx="26" fill="rgba(246,244,241,0.92)"/>
+  <rect x="360" y="320" width="320" height="260" rx="22" fill="#d9c7af" opacity="0.85"/>
+  <rect x="720" y="380" width="360" height="160" rx="22" fill="#1e2c28" opacity="0.9"/>
+  <text x="50%" y="57%" text-anchor="middle" fill="#101418" font-family="Fraunces, 'Times New Roman', serif" font-size="58">Third Night, On Us</text>
+  <text x="50%" y="63%" text-anchor="middle" fill="#5c615e" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="24">Stay three, pay for two in skyline suites</text>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1400" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#121b18"/>
+      <stop offset="1" stop-color="#1e2c28"/>
+    </linearGradient>
+  </defs>
+</svg>

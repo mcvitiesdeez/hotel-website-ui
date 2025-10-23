@@ -1,0 +1,15 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#121a1c"/>
+  <rect width="1400" height="900" fill="url(#grad)"/>
+  <rect x="240" y="240" width="920" height="420" rx="26" fill="rgba(246,244,241,0.9)"/>
+  <rect x="340" y="320" width="320" height="260" rx="24" fill="#d9c7af" opacity="0.9"/>
+  <rect x="700" y="380" width="340" height="160" rx="22" fill="#1e2c28" opacity="0.9"/>
+  <text x="50%" y="56%" text-anchor="middle" fill="#101418" font-family="Fraunces, 'Times New Roman', serif" font-size="54">Market Ramble</text>
+  <text x="50%" y="62%" text-anchor="middle" fill="#5c615e" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="24">Chef-led market tour &amp; tasting</text>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1400" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f1a17"/>
+      <stop offset="1" stop-color="#1f2d28"/>
+    </linearGradient>
+  </defs>
+</svg>

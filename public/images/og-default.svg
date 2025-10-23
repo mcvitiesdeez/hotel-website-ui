@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="url(#paint0_linear)" />
+  <g filter="url(#shadow)">
+    <rect x="180" y="140" width="840" height="350" rx="24" fill="rgba(246,244,241,0.85)" />
+  </g>
+  <text x="50%" y="48%" text-anchor="middle" fill="#101418" font-family="Fraunces, 'Times New Roman', serif" font-size="72">Maison Meridian</text>
+  <text x="50%" y="58%" text-anchor="middle" fill="#5c615e" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="24">Minimalist luxury on the horizon</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101418" />
+      <stop offset="1" stop-color="#1E2C28" />
+    </linearGradient>
+    <filter id="shadow" x="140" y="100" width="920" height="430" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feGaussianBlur in="BackgroundImageFix" stdDeviation="26" />
+      <feComposite in2="SourceAlpha" operator="in" />
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" />
+    </filter>
+  </defs>
+</svg>

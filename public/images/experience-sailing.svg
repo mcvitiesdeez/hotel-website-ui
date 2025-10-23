@@ -1,0 +1,15 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#111b20"/>
+  <rect width="1400" height="900" fill="url(#grad)"/>
+  <rect x="230" y="230" width="940" height="440" rx="28" fill="rgba(246,244,241,0.9)"/>
+  <circle cx="470" cy="450" r="115" fill="#c9b497" opacity="0.88"/>
+  <path d="M680 530C780 470 880 480 970 520C1010 540 1060 520 1110 500" stroke="#1e2c28" stroke-width="14" stroke-linecap="round"/>
+  <text x="50%" y="56%" text-anchor="middle" fill="#101418" font-family="Fraunces, 'Times New Roman', serif" font-size="54">Sunset Sail</text>
+  <text x="50%" y="63%" text-anchor="middle" fill="#5c615e" font-family="Inter, 'Helvetica Neue', sans-serif" font-size="24">Private catamaran &amp; sommelier pours</text>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1400" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#15232a"/>
+      <stop offset="1" stop-color="#0c1316"/>
+    </linearGradient>
+  </defs>
+</svg>
