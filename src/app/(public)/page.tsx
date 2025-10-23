@@ -1,6 +1,5 @@
 import Image from "next/image";
 import AnimatedHero from "@/components/AnimatedHero";
-import StickyCTA from "@/components/StickyCTA";
 import HorizontalRooms from "@/components/HorizontalRooms";
 import { offers } from "@/content/mock/offers";
 import { experiences } from "@/content/mock/experiences";
@@ -216,8 +215,6 @@ export default function HomePage() {
           ))}
         </Accordion>
       </section>
-
-      <StickyCTA />
     </div>
   );
 }
