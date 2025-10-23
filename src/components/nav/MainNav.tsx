@@ -91,19 +91,13 @@ export default function MainNav() {
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="md:hidden"
           >
-            <button
-              type="button"
-              aria-label="Close navigation overlay"
-              onClick={() => setOpen(false)}
-              className="fixed inset-0 z-40 bg-[rgba(16,20,24,0.55)] backdrop-blur-sm"
-            />
             <motion.nav
               id="mobile-nav"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-y-0 right-0 z-50 flex w-[85vw] max-w-xs flex-col gap-6 border-l border-[rgba(255,255,255,0.2)] bg-[rgba(246,244,241,0.95)] px-6 py-8 shadow-[var(--shadow-2)]"
+              className="fixed inset-0 z-50 flex min-h-screen flex-col gap-6 overflow-y-auto bg-[var(--surface)] px-6 py-8 shadow-[var(--shadow-2)]"
             >
               <div className="flex items-center justify-between">
                 <span className="font-display text-base uppercase tracking-[0.28em] text-fg">
