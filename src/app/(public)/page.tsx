@@ -5,6 +5,12 @@ import HorizontalRooms from "@/components/HorizontalRooms";
 import { offers } from "@/content/mock/offers";
 import { experiences } from "@/content/mock/experiences";
 import { buildPageMetadata } from "@/lib/seo";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const metadata = buildPageMetadata({
   title: "Minimalist Luxury Hotel on the Côte d’Azur",
@@ -26,6 +32,34 @@ const aboutHighlights = [
   {
     title: "Culinary",
     copy: "Seasonal menus led by Chef Camille Durand, pairing market-to-table cuisine with our sommelier’s coastal cellar selections.",
+  },
+];
+
+const faqs = [
+  {
+    question: "What time is check-in and check-out?",
+    answer:
+      "Check-in begins at 3pm so we can prepare each suite; check-out is at 11am, with complimentary luggage hold for later departures.",
+  },
+  {
+    question: "Is breakfast included with every stay?",
+    answer:
+      "A slow breakfast featuring coastal produce and house-pressed juices is included for all guests in La Table Meridian or in-suite on request.",
+  },
+  {
+    question: "Can I access the spa without a treatment booking?",
+    answer:
+      "All overnight guests receive spa lounge and hydrotherapy access. Treatments are recommended to book 48 hours in advance to secure preferred times.",
+  },
+  {
+    question: "Do you offer parking or transfers?",
+    answer:
+      "Valet parking is available on property and round-trip transfers can be arranged to Nice Côte d’Azur Airport or local stations through our concierge team.",
+  },
+  {
+    question: "What is your cancellation policy?",
+    answer:
+      "For flexible rates, cancellations up to 72 hours before arrival incur no fee. Late cancellations or no-shows are charged one night’s stay including taxes.",
   },
 ];
 
@@ -150,6 +184,36 @@ export default function HomePage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-[900px] space-y-8">
+        <div className="flex flex-col gap-3">
+          <span className="text-xs uppercase tracking-[0.32em] text-[rgba(16,20,24,0.48)]">
+            Frequently Asked
+          </span>
+          <h2 className="font-display text-[clamp(2.2rem,3vw,3rem)] leading-tight text-fg">
+            Answers for an effortless stay.
+          </h2>
+          <p className="max-w-[540px] text-sm text-[rgba(16,20,24,0.62)]">
+            Our concierge team collected the essentials to help you plan each moment with calm confidence.
+          </p>
+        </div>
+        <Accordion
+          type="single"
+          collapsible
+          className="rounded-[var(--radius-lg)] border border-[rgba(16,20,24,0.08)] bg-[rgba(248,246,242,0.65)] px-4 py-2 backdrop-blur-sm"
+        >
+          {faqs.map((faq, index) => (
+            <AccordionItem key={faq.question} value={`item-${index}`}>
+              <AccordionTrigger className="font-medium text-base text-fg md:text-lg">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-sm leading-relaxed text-[rgba(16,20,24,0.62)]">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </section>
 
       <StickyCTA />

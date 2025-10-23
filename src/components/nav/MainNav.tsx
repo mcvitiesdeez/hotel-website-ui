@@ -13,9 +13,7 @@ const links = [
   { label: "Experiences", href: "/experiences" },
   { label: "Events", href: "/events" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Location", href: "/location" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export default function MainNav() {

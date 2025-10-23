@@ -32,13 +32,13 @@ export default function RoomCard({ room }: { room: Room }) {
             </span>
           ))}
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <span className="text-sm uppercase tracking-[0.28em] text-[rgba(16,20,24,0.52)]">
             {room.rate}
           </span>
           <Link
             href={`/stay/${room.slug}`}
-            className="rounded-full border border-[rgba(16,20,24,0.18)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-fg transition hover:bg-[rgba(16,20,24,0.08)]"
+            className="inline-flex w-full items-center justify-center rounded-full border border-[rgba(16,20,24,0.18)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-fg transition hover:bg-[rgba(16,20,24,0.08)] sm:w-auto"
           >
             View Suite
           </Link>

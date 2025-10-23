@@ -15,9 +15,7 @@ const footerLinks = [
     title: "Plan Your Stay",
     items: [
       { label: "Gallery", href: "/gallery" },
-      { label: "Location", href: "/location" },
       { label: "FAQ", href: "/faq" },
-      { label: "Contact", href: "/contact" },
     ],
   },
 ];

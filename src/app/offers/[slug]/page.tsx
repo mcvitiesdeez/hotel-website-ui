@@ -76,7 +76,7 @@ export default async function OfferPage({ params }: OfferPageProps) {
           </span>
           <Link
             href={bookingUrl}
-            className="rounded-full bg-brand px-6 py-3 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-[var(--brand-dark)]"
+            className="rounded-full bg-[var(--brand)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-[var(--brand-dark)]"
           >
             Book with Offer
           </Link>

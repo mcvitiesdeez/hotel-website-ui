@@ -53,7 +53,7 @@ export default function StickyCTA() {
         border: "1px solid rgba(246, 244, 241, 0.28)",
         pointerEvents: visible ? "auto" : "none",
       }}
-      className="fixed bottom-6 right-6 z-[60] flex items-center gap-3 rounded-full px-6 py-3 text-xs font-semibold uppercase tracking-[0.24em] shadow-[var(--shadow-2)] transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+      className="fixed bottom-5 left-4 right-4 z-[60] flex items-center justify-center gap-3 rounded-full px-5 py-3 text-xs font-semibold uppercase tracking-[0.24em] shadow-[var(--shadow-2)] transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] sm:left-auto sm:right-6 sm:max-w-xs sm:justify-between sm:px-6"
       href={buildBookingUrl({ checkIn, checkOut })}
     >
       Book Your Stay

@@ -54,7 +54,7 @@ export default function EventsPage() {
         </p>
         <Link
           href="/events/enquiry"
-          className="inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-[var(--brand-dark)]"
+          className="inline-flex items-center justify-center rounded-full bg-[var(--brand)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-[var(--brand-dark)]"
         >
           Start Enquiry
         </Link>

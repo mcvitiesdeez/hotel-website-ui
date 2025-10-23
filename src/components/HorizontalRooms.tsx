@@ -45,8 +45,8 @@ export default function HorizontalRooms() {
   }, []);
 
   return (
-    <section className="mx-auto max-w space-y-10">
-      <div className="flex flex-col gap-3 px-6">
+    <section className="mx-auto space-y-10 px-5 sm:px-0">
+      <div className="flex flex-col gap-3 sm:px-6">
         <span className="text-xs uppercase tracking-[0.32em] text-[rgba(16,20,24,0.48)]">
           Suites Collection
         </span>
@@ -59,8 +59,14 @@ export default function HorizontalRooms() {
         </p>
       </div>
 
-      <div ref={wrapperRef} className="relative h-[22rem] overflow-x-auto">
-        <div ref={contentRef} className="flex min-w-max gap-12 pr-[20vw] px-6">
+      <div
+        ref={wrapperRef}
+        className="relative h-[20rem] overflow-x-auto sm:h-[22rem]"
+      >
+        <div
+          ref={contentRef}
+          className="flex min-w-max gap-12 px-3 pr-[20vw] sm:px-6"
+        >
           {rooms.map((room) => (
             <article
               key={room.slug}

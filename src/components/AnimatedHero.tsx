@@ -33,13 +33,15 @@ export default function AnimatedHero() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           className="max-w-2xl text-lg text-[rgba(16,20,24,0.62)]"
         >
-          Suites bathed in morning light, bespoke rituals drawn from the sea, and curated evenings by our in-house sommelier. Every detail is designed for quiet wonder.
+          Suites bathed in morning light, bespoke rituals drawn from the sea,
+          and curated evenings by our in-house sommelier. Every detail is
+          designed for quiet wonder.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-          className="w-full max-w-xl"
+          className="w-full max-w-2xl"
         >
           <QuickBook />
         </motion.div>

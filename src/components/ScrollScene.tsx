@@ -59,7 +59,7 @@ export default function ScrollScene({
   return (
     <section
       ref={sectionRef}
-      className="grid gap-10 rounded-[var(--radius-xl)] border border-[rgba(16,20,24,0.08)] bg-white/70 p-8 shadow-[var(--shadow-1)] backdrop-blur md:grid-cols-[1.1fr_0.9fr]"
+      className="grid gap-8 rounded-[var(--radius-xl)] border border-[rgba(16,20,24,0.08)] bg-white/70 p-6 shadow-[var(--shadow-1)] backdrop-blur md:grid-cols-[1.1fr_0.9fr] md:gap-10 md:p-8"
     >
       <div className="space-y-4">
         <span className="uppercase tracking-[0.28em] text-xs text-[rgba(16,20,24,0.52)]">

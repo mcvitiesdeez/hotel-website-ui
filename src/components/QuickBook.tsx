@@ -1,24 +1,70 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { ChevronDownIcon } from "lucide-react";
+import type { DateRange } from "react-day-picker";
 import { buildBookingUrl } from "@/lib/booking";
 import { trackEvent } from "@/lib/analytics";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 type QuickBookProps = {
   variant?: "default" | "compact";
 };
 
-const today = new Date();
-const isoDate = (date: Date) => date.toISOString().slice(0, 10);
+const guestOptions = [1, 2, 3, 4];
+
+const DAY_IN_MS = 24 * 60 * 60 * 1000;
+
+const startOfDay = (date: Date) => {
+  const next = new Date(date);
+  next.setHours(0, 0, 0, 0);
+  return next;
+};
+
+const addDays = (date: Date, days: number) =>
+  new Date(date.getTime() + days * DAY_IN_MS);
+
+const toISODate = (date: Date) => {
+  const offset = date.getTimezoneOffset() * 60000;
+  return new Date(date.getTime() - offset).toISOString().slice(0, 10);
+};
+
+const DEFAULT_FROM = startOfDay(new Date());
+const DEFAULT_TO = addDays(DEFAULT_FROM, 2);
+
+const formatRangeLabel = (range: DateRange | undefined) => {
+  if (range?.from && range?.to) {
+    return `${range.from.toLocaleDateString()} – ${range.to.toLocaleDateString()}`;
+  }
+  if (range?.from) {
+    return `${range.from.toLocaleDateString()} – …`;
+  }
+  return "Select dates";
+};
 
 export default function QuickBook({ variant = "default" }: QuickBookProps) {
-  const [checkIn, setCheckIn] = useState(isoDate(today));
-  const [checkOut, setCheckOut] = useState(
-    isoDate(new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000)),
-  );
+  const [dateRange, setDateRange] = useState<DateRange | undefined>({
+    from: DEFAULT_FROM,
+    to: DEFAULT_TO,
+  });
   const [adults, setAdults] = useState(2);
 
   const isCompact = variant === "compact";
+
+  const checkInDate = dateRange?.from ?? DEFAULT_FROM;
+  const checkOutDate =
+    dateRange?.to ?? (dateRange?.from ? addDays(dateRange.from, 1) : DEFAULT_TO);
+
+  const checkIn = toISODate(checkInDate);
+  const checkOut = toISODate(checkOutDate);
+
   const bookingUrl = useMemo(
     () =>
       buildBookingUrl({
@@ -33,8 +79,8 @@ export default function QuickBook({ variant = "default" }: QuickBookProps) {
     <form
       className={`${
         isCompact
-          ? "flex items-center gap-2 rounded-full border border-[rgba(16,20,24,0.14)] bg-white/60 px-3 py-2 shadow-[var(--shadow-0)] backdrop-blur"
-          : "grid gap-4 rounded-[var(--radius-xl)] border border-[rgba(16,20,24,0.08)] bg-white/70 p-5 shadow-[var(--shadow-1)] backdrop-blur"
+          ? "flex w-full flex-wrap items-center gap-3 rounded-full border border-[rgba(16,20,24,0.14)] bg-white/60 px-3 py-2 shadow-[var(--shadow-0)] backdrop-blur sm:flex-nowrap sm:gap-4"
+          : "grid w-full grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4 rounded-[var(--radius-xl)] border border-[rgba(16,20,24,0.08)] bg-white/70 p-5 shadow-[var(--shadow-1)] backdrop-blur"
       }`}
       onSubmit={(event) => {
         event.preventDefault();
@@ -43,68 +89,63 @@ export default function QuickBook({ variant = "default" }: QuickBookProps) {
       }}
     >
       <fieldset
-        className={`${
-          isCompact
-            ? "hidden"
-            : "grid gap-1"
-        }`}
+        className={`${isCompact ? "hidden" : "grid min-w-[220px] gap-1"}`}
       >
         <label className="text-xs uppercase tracking-[0.28em] text-[rgba(16,20,24,0.56)]">
-          Check in
+          Stay Dates
         </label>
-        <input
-          type="date"
-          value={checkIn}
-          onChange={(e) => setCheckIn(e.target.value)}
-          className="rounded-[var(--radius-sm)] border border-[rgba(16,20,24,0.12)] bg-white px-4 py-3 text-sm text-fg focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-        />
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              className="flex w-full items-center justify-between gap-3 rounded-[var(--radius-sm)] border border-[rgba(16,20,24,0.12)] bg-white px-4 py-3 text-left text-sm font-normal text-fg hover:bg-[rgba(16,20,24,0.04)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
+              type="button"
+            >
+              <span>{formatRangeLabel(dateRange)}</span>
+              <ChevronDownIcon className="size-4 text-[rgba(16,20,24,0.52)]" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto overflow-hidden rounded-[var(--radius-xl)] border border-[rgba(16,20,24,0.12)] bg-white/95 p-0 shadow-[var(--shadow-1)] backdrop-blur" align="start">
+            <Calendar
+              mode="range"
+              captionLayout="dropdown"
+              numberOfMonths={2}
+              defaultMonth={dateRange?.from ?? DEFAULT_FROM}
+              selected={dateRange}
+              onSelect={(range) => setDateRange(range ?? undefined)}
+              disabled={(date) => date < startOfDay(new Date())}
+            />
+          </PopoverContent>
+        </Popover>
       </fieldset>
 
-      <fieldset
-        className={`${
-          isCompact
-            ? "hidden"
-            : "grid gap-1"
-        }`}
-      >
-        <label className="text-xs uppercase tracking-[0.28em] text-[rgba(16,20,24,0.56)]">
-          Check out
-        </label>
-        <input
-          type="date"
-          value={checkOut}
-          onChange={(e) => setCheckOut(e.target.value)}
-          className="rounded-[var(--radius-sm)] border border-[rgba(16,20,24,0.12)] bg-white px-4 py-3 text-sm text-fg focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-        />
-      </fieldset>
-
-      <fieldset
-        className={`${
-          isCompact ? "hidden" : "grid gap-1"
-        }`}
-      >
+      <fieldset className={`${isCompact ? "hidden" : "grid min-w-[160px] gap-1"}`}>
         <label className="text-xs uppercase tracking-[0.28em] text-[rgba(16,20,24,0.56)]">
           Guests
         </label>
-        <select
-          value={adults}
-          onChange={(e) => setAdults(Number(e.target.value))}
-          className="rounded-[var(--radius-sm)] border border-[rgba(16,20,24,0.12)] bg-white px-4 py-3 text-sm text-fg focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
+        <Select
+          value={String(adults)}
+          onValueChange={(value) => setAdults(Number(value))}
         >
-          {[1, 2, 3, 4].map((count) => (
-            <option key={count} value={count}>
-              {count} {count === 1 ? "Guest" : "Guests"}
-            </option>
-          ))}
-        </select>
+          <SelectTrigger className="h-auto w-full rounded-[var(--radius-sm)] border border-[rgba(16,20,24,0.12)] bg-white px-4 py-3 text-left text-sm text-fg focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]">
+            <SelectValue placeholder="Guests" />
+          </SelectTrigger>
+          <SelectContent className="rounded-[var(--radius-md)] border border-[rgba(16,20,24,0.14)] bg-white shadow-[var(--shadow-1)]">
+            {guestOptions.map((count) => (
+              <SelectItem key={count} value={String(count)}>
+                {count} {count === 1 ? "Guest" : "Guests"}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </fieldset>
 
       <button
         type="submit"
         className={`${
           isCompact
-            ? "rounded-full bg-brand px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-[var(--brand-dark)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-            : "self-end rounded-full bg-brand px-6 py-3 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-[var(--brand-dark)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
+            ? "w-full rounded-full bg-[var(--brand)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-[var(--brand-dark)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)] sm:w-auto"
+            : "w-full rounded-full bg-[var(--brand)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:bg-[var(--brand-dark)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)] md:justify-self-end"
         }`}
       >
         Book Now
