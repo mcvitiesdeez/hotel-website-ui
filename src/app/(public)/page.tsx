@@ -70,7 +70,7 @@ export default function HomePage() {
 
       <HorizontalRooms />
 
-      <section className="mx-auto max-w-[1100px] space-y-10">
+      <section className="mx-auto max-w-[1100px] space-y-10 px-5">
         <div className="flex flex-col gap-3">
           <span className="text-xs uppercase tracking-[0.32em] text-[rgba(16,20,24,0.48)]">
             Maison Experiences
@@ -111,7 +111,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[1100px] gap-12 md:grid-cols-[1.1fr_0.9fr]">
+      <section className="mx-auto grid max-w-[1100px] gap-12 md:grid-cols-[1.1fr_0.9fr] px-5">
         <div className="space-y-6">
           <span className="text-xs uppercase tracking-[0.32em] text-[rgba(16,20,24,0.48)]">
             Maison Meridian
@@ -138,7 +138,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1100px] space-y-10">
+      <section className="mx-auto max-w-[1100px] space-y-10 px-5">
         <div className="grid gap-6 md:grid-cols-3">
           {aboutHighlights.map((item) => (
             <div key={item.title} className="space-y-3">
@@ -151,7 +151,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1100px] space-y-10">
+      <section className="mx-auto max-w-[1100px] space-y-10 px-5">
         <div className="flex flex-col gap-3">
           <span className="text-xs uppercase tracking-[0.32em] text-[rgba(16,20,24,0.48)]">
             Seasonal Offers
@@ -186,7 +186,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[900px] space-y-8">
+      <section className="mx-auto max-w-[900px] space-y-8 px-5">
         <div className="flex flex-col gap-3">
           <span className="text-xs uppercase tracking-[0.32em] text-[rgba(16,20,24,0.48)]">
             Frequently Asked
@@ -195,7 +195,8 @@ export default function HomePage() {
             Answers for an effortless stay.
           </h2>
           <p className="max-w-[540px] text-sm text-[rgba(16,20,24,0.62)]">
-            Our concierge team collected the essentials to help you plan each moment with calm confidence.
+            Our concierge team collected the essentials to help you plan each
+            moment with calm confidence.
           </p>
         </div>
         <Accordion
