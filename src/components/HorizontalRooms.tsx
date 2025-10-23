@@ -44,6 +44,43 @@ export default function HorizontalRooms() {
     };
   }, []);
 
+  useEffect(() => {
+    const wrapperEl = wrapperRef.current;
+    const contentEl = contentRef.current;
+    if (!wrapperEl || !contentEl) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            target.setAttribute("data-visible", "true");
+          } else if (!prefersReducedMotion) {
+            target.setAttribute("data-visible", "false");
+          }
+        });
+      },
+      {
+        root: wrapperEl,
+        threshold: [0.2, 0.4, 0.6],
+      },
+    );
+
+    const cards = Array.from(
+      contentEl.querySelectorAll<HTMLElement>("[data-room-card]"),
+    );
+    cards.forEach((card) => {
+      card.setAttribute("data-visible", prefersReducedMotion ? "true" : "false");
+      observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="mx-auto space-y-10 px-5 sm:px-0">
       <div className="flex flex-col gap-3 sm:px-6">
@@ -70,7 +107,9 @@ export default function HorizontalRooms() {
           {rooms.map((room) => (
             <article
               key={room.slug}
-              className="flex w-[360px] shrink-0 flex-col gap-4"
+              data-room-card
+              data-visible={false}
+              className="flex w-[360px] shrink-0 flex-col gap-4 translate-x-6 opacity-0 transition-all duration-500 ease-out data-[visible=true]:translate-x-0 data-[visible=true]:opacity-100"
             >
               <div className="relative h-48 overflow-hidden rounded-[var(--radius-lg)]">
                 <Image
